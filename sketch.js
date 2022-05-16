@@ -79,7 +79,8 @@ function keyPressed() {
       //insert timer start here
       timeStart();
       gameState = "game";
-    }
+    } else if (gameState === "gamewin")
+      gameState = "game";
   }
   if (gameState === "game") {
     if (key === "s" || key === "S") {
@@ -114,7 +115,6 @@ function infoScreen() {
   background(25, 0, 51);
   stroke(229, 204, 255);
   fill(229, 204, 255);
-  textAlign(CENTER);
   textSize(30);
   textAlign(CENTER);
   text("INFO ON HOW TO PLAY THE GAME", width * 0.5, height * 0.33);
@@ -135,10 +135,6 @@ function gameScreen() {
   textSize(20);
   text("Escape the ghost!", width * 0.5, height * 0.05);
 
-  //exit
-  fill(255, 0, 0);
-  rect(580, 430, 30, 50);
-
   //ghost
   image(ghost, 45, 100);
 
@@ -148,25 +144,26 @@ function gameScreen() {
   player1.debug = mouseIsPressed;
 
   drawSprites();
-  gameLevel1();
 
   //win screen for exit
   if (player1.position.x > 580) {
     if (player1.position.y > 430) {
-      gameState = 'gamewin';
-      console.log('you win');
-      //this.xpos = width / 2;
-      //this.ypos = height / 2;
+      gameState = "gamewin";
+      console.log("you win");
     }
   }
 
+  //exit
+  fill(255, 0, 0);
+  rect(580, 430, 30, 50);
+
   //start timer
   if (frameCount > timeFrame) {
-    gameState = 'gameover';
+    gameState = "gameover";
   }
 
-  fill(0);
-  text("Time: " + frameCount - timeFrame, width * 580, height * 480, 16);
+  fill(255);
+  text("Time: " + frameCount > timeFrame, width * 580, height * 480, 20);
 
 }
 
@@ -179,14 +176,17 @@ function playerMovement() {
     player1.velocity.x = -3;
     //x -= 4;
   }
+
   if (keyIsDown(RIGHT_ARROW)) {
     player1.velocity.x = +3;
     //x += 4;
   }
+
   if (keyIsDown(UP_ARROW)) {
     player1.velocity.y = -3;
     //y -= 4;
   }
+
   if (keyIsDown(DOWN_ARROW)) {
     player1.velocity.y = +3;
     //y += 4;
@@ -195,16 +195,15 @@ function playerMovement() {
 
 //**FUNCTION FOR RENDERING WIN SCREEN
 function gameWin() {
-  background(102, 0, 0);
-  stroke(255, 204, 204);
-  fill(255, 204, 204);
+  background(0, 153, 76);
+  stroke(204, 255, 229);
+  fill(204, 255, 229);
   textAlign(CENTER);
   textSize(60);
   text("YOU WIN!", width * 0.5, height * 0.33);
   noStroke();
   textSize(20);
   text('Press "Enter" To Play Again', width * 0.5, height * 0.66);
-  //gameState = 'gameover';
 }
 
 //**FUNCTION FOR RENDERING GAME OVER SCREEN
@@ -219,5 +218,4 @@ function gameOver() {
   noStroke();
   textSize(20);
   text('Press "Enter" To Play Again', width * 0.5, height * 0.66);
-  //gameState = 'gameover';
 }
