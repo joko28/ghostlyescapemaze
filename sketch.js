@@ -46,123 +46,6 @@ function setup() {
   player1.addImage(pimg);
 
   walls = new Group();
-
-  //border wall
-  wall[0] = createSprite(300, 50, 600, 20); //top
-  wall[0].shapeColor = color(153, 51, 255);
-  walls.add(wall[0]);
-
-  wall[1] = createSprite(10, 280, 20, 440); //left
-  wall[1].shapeColor = color(153, 51, 255);
-  walls.add(wall[1]);
-
-  wall[2] = createSprite(590, 240, 20, 380); //right
-  wall[2].shapeColor = color(153, 51, 255);
-  walls.add(wall[2]);
-
-  wall[3] = createSprite(300, 490, 600, 20); //bottom
-  wall[3].shapeColor = color(153, 51, 255);
-  walls.add(wall[3]);
-
-  //maze layout
-  //vertical
-  wall[4] = createSprite(85, 100, 30, 100); //1stLeftTopV
-  wall[4].shapeColor = color(153, 51, 255);
-  walls.add(wall[4]);
-
-  wall[5] = createSprite(85, 275, 30, 150); //1stLeftMiddleV
-  wall[5].shapeColor = color(153, 51, 255);
-  walls.add(wall[5]);
-
-  wall[6] = createSprite(165, 175, 30, 110); //2ndLeftTopV
-  wall[6].shapeColor = color(153, 51, 255);
-  walls.add(wall[6]);
-
-  wall[7] = createSprite(165, 420, 30, 120); //1stBottomLeftV
-  wall[7].shapeColor = color(153, 51, 255);
-  walls.add(wall[7]);
-
-  wall[8] = createSprite(215, 255, 30, 110); //2ndLeftMiddleV
-  wall[8].shapeColor = color(153, 51, 255);
-  walls.add(wall[8]);
-
-  wall[9] = createSprite(245, 175, 30, 110); //3rdLeftTopV
-  wall[9].shapeColor = color(153, 51, 255);
-  walls.add(wall[9]);
-
-  wall[10] = createSprite(245, 460, 30, 50); //2ndLeftBottomV
-  wall[10].shapeColor = color(153, 51, 255);
-  walls.add(wall[10]);
-
-  wall[11] = createSprite(325, 335, 30, 110); //3rdLeftMiddleV
-  wall[11].shapeColor = color(153, 51, 255);
-  walls.add(wall[11]);
-
-  wall[12] = createSprite(325, 460, 30, 50); //3rdLeftBottomV
-  wall[12].shapeColor = color(153, 51, 255);
-  walls.add(wall[12]);
-
-  wall[13] = createSprite(415, 100, 30, 100); //4thLeftTopV
-  wall[13].shapeColor = color(153, 51, 255);
-  walls.add(wall[13]);
-
-  wall[14] = createSprite(415, 400, 30, 80); //4thLeftBottomV
-  wall[14].shapeColor = color(153, 51, 255);
-  walls.add(wall[14]);
-
-  wall[15] = createSprite(505, 160, 30, 80); //5thLeftTopV
-  wall[15].shapeColor = color(153, 51, 255);
-  walls.add(wall[15]);
-
-  wall[16] = createSprite(505, 430, 30, 110); //5thLeftBottomV
-  wall[16].shapeColor = color(153, 51, 255);
-  walls.add(wall[16]);
-
-  //horizontal
-  wall[17] = createSprite(50, 215, 100, 30); //1stLeftMiddleH
-  wall[17].shapeColor = color(153, 51, 255);
-  walls.add(wall[17]);
-
-  wall[18] = createSprite(50, 410, 100, 30); //1stBottomH
-  wall[18].shapeColor = color(153, 51, 255);
-  walls.add(wall[18]);
-
-  wall[19] = createSprite(120, 135, 100, 30); //1stTopH
-  wall[19].shapeColor = color(153, 51, 255);
-  walls.add(wall[19]);
-
-  wall[20] = createSprite(110, 295, 80, 30); //2ndMiddleH
-  wall[20].shapeColor = color(153, 51, 255);
-  walls.add(wall[20])
-
-  wall[21] = createSprite(250, 215, 200, 30); //3rdMiddleH
-  wall[21].shapeColor = color(153, 51, 255);
-  walls.add(wall[21]);
-
-  wall[22] = createSprite(290, 135, 120, 30); //2ndTopH
-  wall[22].shapeColor = color(153, 51, 255);
-  walls.add(wall[22]);
-
-  wall[23] = createSprite(285, 375, 110, 30); //2ndBottomH
-  wall[23].shapeColor = color(153, 51, 255);
-  walls.add(wall[23]);
-
-  wall[24] = createSprite(350, 295, 140, 30); //4thMiddleH
-  wall[24].shapeColor = color(153, 51, 255);
-  walls.add(wall[24]);
-
-  wall[25] = createSprite(460, 215, 120, 30); //5thMiddleH
-  wall[25].shapeColor = color(153, 51, 255);
-  walls.add(wall[25]);
-
-  wall[26] = createSprite(460, 375, 120, 30); //3rdBottomH
-  wall[26].shapeColor = color(153, 51, 255);
-  walls.add(wall[26]);
-
-  wall[27] = createSprite(530, 295, 100, 30); //6thMiddleH
-  wall[27].shapeColor = color(153, 51, 255);
-  walls.add(wall[27]);
-
 }
 
 function draw() {
@@ -177,6 +60,9 @@ function draw() {
     case "game":
       gameScreen();
       playerMovement();
+      break;
+    case "gamewin":
+      gameWin();
       break;
     case "gameover":
       gameOver();
@@ -253,11 +139,7 @@ function gameScreen() {
   fill(255, 0, 0);
   rect(580, 430, 30, 50);
 
-  //gameState = 'gameover';
-
   //ghost
-  //fill(255);
-  //ellipse(45, 100, 30);
   image(ghost, 45, 100);
 
   //player movement collision debug
@@ -266,11 +148,12 @@ function gameScreen() {
   player1.debug = mouseIsPressed;
 
   drawSprites();
+  gameLevel1();
 
   //win screen for exit
   if (player1.position.x > 580) {
     if (player1.position.y > 430) {
-      gameState = 'gameover';
+      gameState = 'gamewin';
       console.log('you win');
       //this.xpos = width / 2;
       //this.ypos = height / 2;
@@ -281,6 +164,10 @@ function gameScreen() {
   if (frameCount > timeFrame) {
     gameState = 'gameover';
   }
+
+  fill(0);
+  text("Time: " + frameCount - timeFrame, width * 580, height * 480, 16);
+
 }
 
 //**PLAYER MOVEMENT
@@ -292,22 +179,32 @@ function playerMovement() {
     player1.velocity.x = -3;
     //x -= 4;
   }
-
   if (keyIsDown(RIGHT_ARROW)) {
     player1.velocity.x = +3;
     //x += 4;
   }
-
   if (keyIsDown(UP_ARROW)) {
     player1.velocity.y = -3;
     //y -= 4;
   }
-
   if (keyIsDown(DOWN_ARROW)) {
     player1.velocity.y = +3;
     //y += 4;
   }
+}
 
+//**FUNCTION FOR RENDERING WIN SCREEN
+function gameWin() {
+  background(102, 0, 0);
+  stroke(255, 204, 204);
+  fill(255, 204, 204);
+  textAlign(CENTER);
+  textSize(60);
+  text("YOU WIN!", width * 0.5, height * 0.33);
+  noStroke();
+  textSize(20);
+  text('Press "Enter" To Play Again', width * 0.5, height * 0.66);
+  //gameState = 'gameover';
 }
 
 //**FUNCTION FOR RENDERING GAME OVER SCREEN
@@ -322,5 +219,5 @@ function gameOver() {
   noStroke();
   textSize(20);
   text('Press "Enter" To Play Again', width * 0.5, height * 0.66);
-  gameState = 'gameover';
+  //gameState = 'gameover';
 }
