@@ -1,4 +1,7 @@
-function gameLevel1();
+function gameLevel1() {
+
+  walls = new Group();
+
 //border wall
 wall[0] = createSprite(300, 50, 600, 20); //top
 wall[0].shapeColor = color(153, 51, 255);
