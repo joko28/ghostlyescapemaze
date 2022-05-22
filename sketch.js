@@ -18,18 +18,23 @@
 let x = 100;
 let y = 100;
 
+//wall collisions
 var walls;
 let wall = [];
 var walls2;
 let wall2 = [];
+//var walls3;
+//let wall3 = [];
 
-
+//player
 var player1;
 var players;
+
 //screens
 let canvas;
 let gameState = "title";
 let level = 1;
+
 //timer
 let startTime;
 let timeFrame;
@@ -50,6 +55,7 @@ function setup() {
 
   gameLevel1();
   gameLevel2();
+  //gameLevel3();
 
   imageMode(CENTER);
   var pimg = loadImage('assets/player.png');
@@ -100,8 +106,7 @@ function keyPressed() {
       } else if ( level == 2) {
         level = 3;
       }
-    }
-    if (gameState === "game") {
+    }  if (gameState === "game") {
       if (key === "s" || key === "S") {
         saveCanvas();
       } else if (gameState === "game") {
@@ -160,9 +165,7 @@ function keyPressed() {
     //still needs movement to be an actual game!!
 
 
-
     //player movement collision debug
-
     playerMovement();
     player1.debug = mouseIsPressed;
     if (level == 1) {
