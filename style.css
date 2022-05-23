@@ -2,31 +2,29 @@
 
 html, body {
   margin: 0;
-  padding: 0;
+  padding: 0px;
   font-family: 'Monoton', cursive;
   /*background-color: #000066;*/
   background-color: #E5CCFF;
-
 }
 
 canvas {
   display: block;
   margin: auto;
-  padding: 5px;
+  padding: 0px;
 }
 
 #myCanvas canvas {
   display: block;
   margin: auto;
   border-radius: 1100px;
-  padding: 10px;
+  padding: 5px;
 }
 
 h1 {
   text-align: center;
   color: Black;
-  /*padding: 0px;*/
-  padding-left:0;
+  padding: 0px;
   font-size: 50px;
 }
 

@@ -23,8 +23,8 @@ var walls;
 let wall = [];
 var walls2;
 let wall2 = [];
-//var walls3;
-//let wall3 = [];
+var walls3;
+let wall3 = [];
 
 //player
 var player1;
@@ -55,7 +55,7 @@ function setup() {
 
   gameLevel1();
   gameLevel2();
-  //gameLevel3();
+  gameLevel3();
 
   imageMode(CENTER);
   var pimg = loadImage('assets/player.png');
@@ -142,12 +142,13 @@ function keyPressed() {
     fill(229, 204, 255);
     textSize(30);
     textAlign(CENTER);
-    text("INFO ON HOW TO PLAY THE GAME", width * 0.5, height * 0.33);
+    text("INFO ON HOW TO PLAY THE GAME", width * 0.5, height * 0.1);
     textSize(20);
-    text('Press "Enter" To Start Game', width * 0.5, height * 0.46);
-    text('Press "S" to save the game', width * 0.5, height * 0.56);
-    text('Press "X" to end game', width * 0.5, height * 0.66);
-    text('Press "Enter" To Play Again', width * 0.5, height * 0.76);
+    textAlign(LEFT);
+    text('Press "Enter" To Start Game', width * 0.1, height * 0.46);
+    text('Press "S" to save the game', width * 0.1, height * 0.56);
+    text('Press "X" to end game', width * 0.1, height * 0.66);
+    text('Press "Enter" to play again', width * 0.1, height * 0.76);
   }
 
   //**FUNCTION FOR RENDERING THE MAIN GAME PLAY SCREEN
@@ -164,7 +165,6 @@ function keyPressed() {
     image(ghost, 45, 100);
     //still needs movement to be an actual game!!
 
-
     //player movement collision debug
     playerMovement();
     player1.debug = mouseIsPressed;
@@ -180,8 +180,6 @@ function keyPressed() {
     }
 
     drawSprites(players);
-
-
 
     //win screen for exit
     if (player1.position.x > 580) {
@@ -204,7 +202,7 @@ function keyPressed() {
     fill(255);
     let currentTime = int((timeFrame - frameCount) / 60);
     textAlign(LEFT);
-    text("Time: " + currentTime, 400, 540);
+    text("Time: " + currentTime, 10, 540);
   }
 
   //**PLAYER MOVEMENT
