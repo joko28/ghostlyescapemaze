@@ -25,16 +25,12 @@ h1 {
   text-align: center;
   color: Black;
   padding: 0px;
-  font-size: 50px;
+  font-size: 45px;
 }
 
-h2 {
-  text-align: CENTER;
-}
-
-h4 {
-  text-align: LEFT;
-  /*padding: 0;*/
-  margin: 50px;
-
+button {
+  margin: auto-center;
+  padding: 0px;
+  text-align: center;
+  font-family: 'Monoton', cursive;
 }
