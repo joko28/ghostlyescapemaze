@@ -26,21 +26,21 @@ h1 {
   text-align: center;
   color: Black;
   padding: 0px;
-  font-size: 45px;
+  font-size: 40px;
 }
 
 h2 {
   text-align: center;
   color: Black;
   padding: 0px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 p.fn {
   text-align: center;
   color: Black;
   padding: 0px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 a {
@@ -51,5 +51,5 @@ div.center {
   margin: auto;
   width: 60%;
   border: 3px solid #190033;
-  FFFFFF
+  background-color: #F0D5FF;
 }
