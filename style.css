@@ -14,7 +14,12 @@ canvas {
   padding: 0px;
 }
 
-
+#your-element-selector {
+  width: 100vw;
+  height:100vh;
+  position: fixed;
+  z-index: -999; /*order send to back*/
+}
 
 h1 {
   text-align: center;
@@ -36,14 +41,15 @@ p.fn {
   padding: 0px;
   font-size: 15px;
 }
+
 a {
-  text-align: center;
+    color: White;
 }
 
 div.center {
   margin: auto;
   width: 60%;
   border: 3px solid #190033;
-  padding-left: 30%;
-  padding-right: 30%
+FFFFFF
+
 }
