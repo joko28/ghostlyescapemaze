@@ -103,10 +103,11 @@ function keyPressed() {
       player1.position.y = 100;
       if (level == 1) {
         level = 2;
-      } else if ( level == 2) {
+      } else if (level == 2) {
         level = 3;
       }
-    }  if (gameState === "game") {
+    }
+    if (gameState === "game") {
       if (key === "s" || key === "S") {
         saveCanvas();
       } else if (gameState === "game") {
@@ -118,142 +119,142 @@ function keyPressed() {
   }
 }
 
-  //**FUNCTION FOR TIMER DURING GAMESCREEN
-  function timeStart() {
-    startTime = frameCount;
-    timeFrame = startTime + timeInt;
+//**FUNCTION FOR TIMER DURING GAMESCREEN
+function timeStart() {
+  startTime = frameCount;
+  timeFrame = startTime + timeInt;
+}
+
+//**FUNCTION FOR RENDERING THE TITLE SCREEN
+function titleScreen() {
+  background(25, 0, 51);
+  stroke(229, 204, 255);
+  fill(229, 204, 255);
+  textAlign(CENTER);
+  noStroke();
+  textSize(20);
+  text('Press "Enter" To Start Game', width * 0.5, height * 0.5);
+}
+
+//**FUNCTION FOR INFO SCREEN
+function infoScreen() {
+  background(25, 0, 51);
+  stroke(229, 204, 255);
+  fill(229, 204, 255);
+  textSize(30);
+  textAlign(CENTER);
+  text("INFO ON HOW TO PLAY THE GAME", width * 0.5, height * 0.1);
+  textSize(20);
+  textAlign(LEFT);
+  text('Press "Enter" To Start Game', width * 0.1, height * 0.46);
+  text('Press "S" to save the game', width * 0.1, height * 0.56);
+  text('Press "X" to end game', width * 0.1, height * 0.66);
+  text('Press "Enter" to play again', width * 0.1, height * 0.76);
+}
+
+//**FUNCTION FOR RENDERING THE MAIN GAME PLAY SCREEN
+function gameScreen() {
+  //text
+  background(25, 0, 51);
+  stroke(229, 204, 255);
+  fill(229, 204, 255);
+  textAlign(CENTER);
+  textSize(20);
+  text("Escape the ghost!", width * 0.5, height * 0.05);
+
+  //ghost
+  image(ghost, 45, 100);
+  //still needs movement to be an actual game!!
+
+  //player movement collision debug
+  playerMovement();
+  player1.debug = mouseIsPressed;
+  if (level == 1) {
+    player1.collide(walls);
+    drawSprites(walls);
+  } else if (level == 2) {
+    player1.collide(walls2);
+    drawSprites(walls2);
+  } else if (level == 3) {
+    player1.collide(walls3);
+    drawSprites(walls3);
   }
 
-  //**FUNCTION FOR RENDERING THE TITLE SCREEN
-  function titleScreen() {
-    background(25, 0, 51);
-    stroke(229, 204, 255);
-    fill(229, 204, 255);
-    textAlign(CENTER);
-    noStroke();
-    textSize(20);
-    text('Press "Enter" To Start Game', width * 0.5, height * 0.5);
-  }
+  drawSprites(players);
 
-  //**FUNCTION FOR INFO SCREEN
-  function infoScreen() {
-    background(25, 0, 51);
-    stroke(229, 204, 255);
-    fill(229, 204, 255);
-    textSize(30);
-    textAlign(CENTER);
-    text("INFO ON HOW TO PLAY THE GAME", width * 0.5, height * 0.1);
-    textSize(20);
-    textAlign(LEFT);
-    text('Press "Enter" To Start Game', width * 0.1, height * 0.46);
-    text('Press "S" to save the game', width * 0.1, height * 0.56);
-    text('Press "X" to end game', width * 0.1, height * 0.66);
-    text('Press "Enter" to play again', width * 0.1, height * 0.76);
-  }
-
-  //**FUNCTION FOR RENDERING THE MAIN GAME PLAY SCREEN
-  function gameScreen() {
-    //text
-    background(25, 0, 51);
-    stroke(229, 204, 255);
-    fill(229, 204, 255);
-    textAlign(CENTER);
-    textSize(20);
-    text("Escape the ghost!", width * 0.5, height * 0.05);
-
-    //ghost
-    image(ghost, 45, 100);
-    //still needs movement to be an actual game!!
-
-    //player movement collision debug
-    playerMovement();
-    player1.debug = mouseIsPressed;
-    if (level == 1) {
-      player1.collide(walls);
-      drawSprites(walls);
-    } else if (level == 2) {
-      player1.collide(walls2);
-      drawSprites(walls2);
-    } else if (level == 3) {
-      player1.collide(walls3);
-      drawSprites(walls3);
-    }
-
-    drawSprites(players);
-
-    //win screen for exit
-    if (player1.position.x > 580) {
-      if (player1.position.y > 430) {
-        gameState = "gamewin";
-        console.log("you win");
-      }
-    }
-
-    //exit
-    fill(255, 0, 0);
-    rect(580, 430, 30, 50);
-
-    //start timer
-    if (frameCount > timeFrame) {
-      gameState = "gameover";
-    }
-
-    //timer text
-    fill(255);
-    let currentTime = int((timeFrame - frameCount) / 60);
-    textAlign(LEFT);
-    text("Time: " + currentTime, 10, 540);
-  }
-
-  //**PLAYER MOVEMENT
-  function playerMovement() {
-    player1.velocity.x = 0;
-    player1.velocity.y = 0;
-
-    if (keyIsDown(LEFT_ARROW)) {
-      player1.velocity.x = -3;
-      //x -= 4;
-    }
-
-    if (keyIsDown(RIGHT_ARROW)) {
-      player1.velocity.x = +3;
-      //x += 4;
-    }
-
-    if (keyIsDown(UP_ARROW)) {
-      player1.velocity.y = -3;
-      //y -= 4;
-    }
-
-    if (keyIsDown(DOWN_ARROW)) {
-      player1.velocity.y = +3;
-      //y += 4;
+  //win screen for exit
+  if (player1.position.x > 580) {
+    if (player1.position.y > 430) {
+      gameState = "gamewin";
+      console.log("you win");
     }
   }
 
-  //**FUNCTION FOR RENDERING WIN SCREEN
-  function gameWin() {
-    background(0, 153, 76);
-    stroke(204, 255, 229);
-    fill(204, 255, 229);
-    textAlign(CENTER);
-    textSize(60);
-    text("YOU WIN!", width * 0.5, height * 0.33);
-    noStroke();
-    textSize(20);
-    text('Press "Enter" To Play Again', width * 0.5, height * 0.66);
+  //exit
+  fill(255, 0, 0);
+  rect(580, 430, 30, 50);
+
+  //start timer
+  if (frameCount > timeFrame) {
+    gameState = "gameover";
   }
 
-  //**FUNCTION FOR RENDERING GAME OVER SCREEN
-  function gameOver() {
-    //background(255, 204, 204);
-    background(102, 0, 0);
-    stroke(255, 204, 204);
-    fill(255, 204, 204);
-    textAlign(CENTER);
-    textSize(60);
-    text("GAME OVER", width * 0.5, height * 0.33);
-    noStroke();
-    textSize(20);
-    text('Press "Enter" To Play Again', width * 0.5, height * 0.66);
+  //timer text
+  fill(255);
+  let currentTime = int((timeFrame - frameCount) / 60);
+  textAlign(LEFT);
+  text("Time: " + currentTime, 10, 540);
+}
+
+//**PLAYER MOVEMENT
+function playerMovement() {
+  player1.velocity.x = 0;
+  player1.velocity.y = 0;
+
+  if (keyIsDown(LEFT_ARROW)) {
+    player1.velocity.x = -3;
+    //x -= 4;
   }
+
+  if (keyIsDown(RIGHT_ARROW)) {
+    player1.velocity.x = +3;
+    //x += 4;
+  }
+
+  if (keyIsDown(UP_ARROW)) {
+    player1.velocity.y = -3;
+    //y -= 4;
+  }
+
+  if (keyIsDown(DOWN_ARROW)) {
+    player1.velocity.y = +3;
+    //y += 4;
+  }
+}
+
+//**FUNCTION FOR RENDERING WIN SCREEN
+function gameWin() {
+  background(0, 153, 76);
+  stroke(204, 255, 229);
+  fill(204, 255, 229);
+  textAlign(CENTER);
+  textSize(60);
+  text("YOU WIN!", width * 0.5, height * 0.33);
+  noStroke();
+  textSize(20);
+  text('Press "Enter" To Play Again', width * 0.5, height * 0.66);
+}
+
+//**FUNCTION FOR RENDERING GAME OVER SCREEN
+function gameOver() {
+  //background(255, 204, 204);
+  background(102, 0, 0);
+  stroke(255, 204, 204);
+  fill(255, 204, 204);
+  textAlign(CENTER);
+  textSize(60);
+  text("GAME OVER", width * 0.5, height * 0.33);
+  noStroke();
+  textSize(20);
+  text('Press "Enter" To Play Again', width * 0.5, height * 0.66);
+}
