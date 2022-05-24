@@ -14,12 +14,7 @@ canvas {
   padding: 0px;
 }
 
-#myCanvas canvas {
-  display: block;
-  margin: auto;
-  border-radius: 1100px;
-  padding: 5px;
-}
+
 
 h1 {
   text-align: center;
@@ -28,9 +23,27 @@ h1 {
   font-size: 45px;
 }
 
-button {
-  margin: 0;
-  padding: 0px;
+h2 {
+text-align: center;
+color: Black;
+padding: 0px;
+font-size: 25px;
+}
+
+p.fn {
   text-align: center;
-  font-family: 'Monoton', cursive;
+  color: Black;
+  padding: 0px;
+  font-size: 15px;
+}
+a {
+  text-align: center;
+}
+
+div.center {
+  margin: auto;
+  width: 60%;
+  border: 3px solid #190033;
+  padding-left: 30%;
+  padding-right: 30%
 }

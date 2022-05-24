@@ -2,19 +2,51 @@
 <html lang="en">
 
 <head>
+  <script src="three.r119.min.js"></script>
+  <script src="vanta.fog.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    VANTA.FOG ('#my-background')
+  </style>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-a11y="true"></script>
+  <meta charset="utf-8">
+
   <title>Ghostly Escape Maze Game</title>
   <h1>Ghostly Escape Maze</h1>
-  <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 
 <body>
   <main>
+    <div class="center">
+      <h2>ARTIST STATEMENT</h2>
+      <p class="fn">
+        <i> </i>
+      </p>
+    </div>
+    <p class="fn">
+      <a href="index.html" class="effect">GAME</a>
+      <br>
+      <a href="artiststatement.html" class="effect">ARTIST STATEMENT</a>
+    </p>
+
   </main>
 
-  <a href="artiststatement.html" class="effect">ARTIST STATEMENT</a>
-  <br>
-  <button type="button" href="index.html">Return to Game Page</button>
+  <script>
+    VANTA.FOG({
+      el: "#your-element-selector",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      highlightColor: 0x7822a0,
+      midtoneColor: 0x592a69,
+      lowlightColor: 0x7800ff,
+      blurFactor: 0.53,
+      speed: 0.80
+    })
+  </script>
 </body>
 
 </html>
